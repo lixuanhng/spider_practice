@@ -18,7 +18,7 @@ def articleTypeEntrance(url_tmp, cnt, save_path):
     :param cnt:
     :return:
     """
-    time.sleep(10)  # 添加时间间隔
+    time.sleep(20)  # 添加时间间隔
     str_html = requests.get(url_tmp)
     soup = BeautifulSoup(str_html.text, 'lxml')
     # 将结果转为字符串
@@ -46,7 +46,7 @@ def requireArticle(object_id, save_path):
     :param object_id:
     :return:
     """
-    time.sleep(10)
+    time.sleep(20)
     url_comb = 'https://dxy.com/article/' + object_id
     sin_html = requests.get(url_comb)
     soup = BeautifulSoup(sin_html.text, 'lxml')
@@ -67,7 +67,7 @@ def requireArticle(object_id, save_path):
                 if item in content:
                     content = content.split(item)[0]
                     break
-            print(content)
+            print('\t\t' + content)
 
             with open(save_path, 'a', encoding='utf-8') as f:
                 f.write(content + '\n')
@@ -82,6 +82,7 @@ if __name__ == '__main__':
     article_num = 0
 
     """
+    4/1
     # 膳食指南-疾病饮食-9页-35文章-art_diet_diseaseDiet.txt
     url = "https://dxy.com/baike/category/24834?tag_id=25323" 
     
@@ -109,16 +110,62 @@ if __name__ == '__main__':
     # 膳食指南-蛋及蛋制品-3页-10文章-art_diet_egg.txt
     url = "https://dxy.com/baike/category/24834?tag_id=25328"
     
+    
     # 膳食指南-微量/常量元素-7页-10文章-art_diet_nutrient.txt
     url = "https://dxy.com/baike/category/24834?tag_id=25331"
+    
+    4/6
+    # 膳食指南-食品安全-4页-27文章-art_diet_food_safety_0406.txt
+    url = https://dxy.com/baike/category/24834?tag_id=25332
+    
+    # 膳食指南-海鲜-5页-15文章-art_diet_seafood_0406.txt
+    url = https://dxy.com/baike/category/24834?tag_id=24199
+    
+    # 膳食指南-外卖夜宵-2页-14文章-art_diet_takeout_0406.txt
+    url = https://dxy.com/baike/category/24834?tag_id=25335
+    
+    # 膳食指南-甜品-3页-15文章-art_diet_dessert_0406.txt
+    url = https://dxy.com/baike/category/24834?tag_id=22395
+    
+    # 膳食指南-养生饮食-2页-19文章-art_diet_liveLong_0406.txt
+    url = https://dxy.com/baike/category/24834?tag_id=25334
+    
+    # 膳食指南-肉类-5页-26文章-art_diet_meat_0406.txt
+    url = https://dxy.com/baike/category/24834?tag_id=25337
+    
+    # 膳食指南-蔬菜-8页-45文章-art_diet_vegatable_0406.txt
+    url = https://dxy.com/baike/category/24834?tag_id=22511
+    
+    # 膳食指南-调味品-8页-14文章-art_diet_condiment_0406.txt
+    url = https://dxy.com/baike/category/24834?tag_id=22940
+    
+    # 膳食指南-饮品-8页-10文章-art_diet_drink_0406.txt
+    url = https://dxy.com/baike/category/24834?tag_id=25330
+    
+    # 膳食指南-水果-9页-10文章-art_diet_fruit_0406.txt
+    url = https://dxy.com/baike/category/24834?tag_id=22259
+    
+    # 保健品-所有类型-art_health_care_0406.txt
+    url = https://dxy.com/baike/category/24839?tag_id=25204--燕窝-4
+    url = https://dxy.com/baike/category/24839?tag_id=23917--人参-2
+    url = https://dxy.com/baike/category/24839?tag_id=25197--阿胶-1
+    url = https://dxy.com/baike/category/24839?tag_id=25207--酵素-2
+    url = https://dxy.com/baike/category/24839?tag_id=25201--蛋白粉-1
+    url = https://dxy.com/baike/category/24839?tag_id=25205--灵芝-1
+    url = https://dxy.com/baike/category/24839?tag_id=23213--虫草-2
+    url = https://dxy.com/baike/category/24839?tag_id=24629--铁皮石斛-1
+    url = https://dxy.com/baike/category/24839?tag_id=25198--纳豆-1
+    url = https://dxy.com/baike/category/24839?tag_id=25199--玛卡-1
+    url = https://dxy.com/baike/category/24839?tag_id=25200--松花粉-1
+    url = https://dxy.com/baike/category/24839?tag_id=25203--松茸-1
     """
 
     # 建立新的爬虫，需要修改如下3个变量
-    url = "https://dxy.com/baike/category/24834?tag_id=25331"
-    max_page = 7
-    path = '../data_crawled/art_diet_nutrient.txt'
+    url = "https://dxy.com/baike/category/24839?tag_id=25203"
+    max_page = 1
+    path = '../data_crawled/art_health_care_0406.txt'
 
-    for idx in range(2, max_page+1):
+    for idx in range(1, max_page+1):
         print('开始第 {} 页面抓取'.format(str(idx)))
         count = 0
         if idx == 1:
